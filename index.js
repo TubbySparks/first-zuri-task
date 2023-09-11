@@ -19,11 +19,16 @@ const daysOfWeek = [
 ];
 const response = app.get("/api", (req, res) => {
   const { slack_name, track } = req.query;
+
+  const utc = new Date(
+    new Date().getTime() + new Date().getTimezoneOffset() * 60000
+  );
+
   res.send({
     slack_name: slack_name,
     track: track,
     current_day: daysOfWeek[day],
-    utc_time: date.toISOString().split(".")[0] + "Z",
+    utc_time: utc.toISOString().split(".")[0] + "Z",
     github_file_url:
       "https://github.com/TubbySparks/first-zuri-task/blob/main/index.js",
     github_repo_url: "https://github.com/TubbySparks/first-zuri-task",
