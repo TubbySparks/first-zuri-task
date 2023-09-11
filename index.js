@@ -18,7 +18,7 @@ const daysOfWeek = [
   "Saturday",
 ];
 const response = app.get("/api", (req, res) => {
-  const { slack_name, track } = req.params;
+  const { slack_name, track } = req.query;
   res.send({
     slack_name: slack_name,
     track: track,
